@@ -6,7 +6,8 @@
 
 		public Game()
 		{
-			GameBoard = new[,] {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
+			const int empty = 0;
+			GameBoard = new[,] {{empty, empty, empty}, {empty, empty, empty}, {empty, empty, empty}};
 		}
 	}
 }

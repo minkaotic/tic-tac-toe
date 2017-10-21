@@ -6,7 +6,6 @@ namespace TicTacToe.Tests
 	public class GameFlowTests
 	{
 		/* TODO: Things to test:
-		 * 1. It can represent a 3x3 empty game board
 		 * 2. It persists one player's moves (x)
 		 * 3. It persists other player's moves (0)
 		 * 4. A token cannot be placed in a field that already has a token
@@ -21,8 +20,12 @@ namespace TicTacToe.Tests
 
 			Assert.That(game.GameBoard.Length, Is.EqualTo(9));
 			Assert.That(game.GameBoard.Rank, Is.EqualTo(2));
-			Assert.That(game.GameBoard.GetUpperBound(0), Is.EqualTo(2));
-			Assert.That(game.GameBoard.GetUpperBound(1), Is.EqualTo(2));
+
+			const int firstDimension = 0;
+			const int secondDimension = 1;
+			const int indexOfThirdElement = 2;
+			Assert.That(game.GameBoard.GetUpperBound(firstDimension), Is.EqualTo(indexOfThirdElement));
+			Assert.That(game.GameBoard.GetUpperBound(secondDimension), Is.EqualTo(indexOfThirdElement));
 		}
 	}
 }
