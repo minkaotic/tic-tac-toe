@@ -5,6 +5,14 @@ namespace TicTacToe.Tests
 	[TestFixture]
 	public class GameFlowTests
 	{
+		private Game _game;
+
+		[SetUp]
+		public void Setup()
+		{
+			_game = new Game();
+		}
+
 		/* TODO: Things to test:
 		First player's moves are persisted (x)
 		Second player's moves are persisted (0)
@@ -18,16 +26,22 @@ namespace TicTacToe.Tests
 		[Test]
 		public void Represents_a_3_by_3_game_board()
 		{
-			var game = new Game();
-
-			Assert.That(game.GameBoard.Length, Is.EqualTo(9));
-			Assert.That(game.GameBoard.Rank, Is.EqualTo(2));
+			Assert.That(_game.GameBoard.Length, Is.EqualTo(9));
+			Assert.That(_game.GameBoard.Rank, Is.EqualTo(2));
 
 			const int firstDimension = 0;
 			const int secondDimension = 1;
 			const int indexOfThirdElement = 2;
-			Assert.That(game.GameBoard.GetUpperBound(firstDimension), Is.EqualTo(indexOfThirdElement));
-			Assert.That(game.GameBoard.GetUpperBound(secondDimension), Is.EqualTo(indexOfThirdElement));
+			Assert.That(_game.GameBoard.GetUpperBound(firstDimension), Is.EqualTo(indexOfThirdElement));
+			Assert.That(_game.GameBoard.GetUpperBound(secondDimension), Is.EqualTo(indexOfThirdElement));
+		}
+
+		[Test]
+		public void Stores_first_player_move()
+		{
+			_game.PlayNextTurn(2, 2);
+
+			Assert.That(_game.GameBoard[2,2], Is.EqualTo((int)FieldIs.X));
 		}
 	}
 }

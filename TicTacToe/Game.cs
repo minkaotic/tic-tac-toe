@@ -2,12 +2,21 @@
 {
 	public class Game
 	{
-		public int[,] GameBoard { get; set; }
+		public int[,] GameBoard { get; }
 
 		public Game()
 		{
-			const int empty = 0;
-			GameBoard = new[,] {{empty, empty, empty}, {empty, empty, empty}, {empty, empty, empty}};
+			GameBoard = new[,]
+			{
+				{ (int)FieldIs.Empty, (int)FieldIs.Empty, (int)FieldIs.Empty },
+				{ (int)FieldIs.Empty, (int)FieldIs.Empty, (int)FieldIs.Empty },
+				{ (int)FieldIs.Empty, (int)FieldIs.Empty, (int)FieldIs.Empty }
+			};
+		}
+
+		public void PlayNextTurn(int horizontal, int vertical)
+		{
+			GameBoard[2,2] = (int)FieldIs.X;
 		}
 	}
 }
