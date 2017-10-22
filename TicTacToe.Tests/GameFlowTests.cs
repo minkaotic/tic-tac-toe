@@ -6,12 +6,14 @@ namespace TicTacToe.Tests
 	public class GameFlowTests
 	{
 		/* TODO: Things to test:
-		 * 2. It persists one player's moves (x)
-		 * 3. It persists other player's moves (0)
-		 * 4. A token cannot be placed in a field that already has a token
-		 * 5. 3 in a row is a win
-		 * 6. A full board without 3 in a row ends game in draw
-		 */
+		First player's moves are persisted (x)
+		Second player's moves are persisted (0)
+		Players (and thus token types) draws are strictly alternated
+		Returns currently active player
+		A token cannot be placed in a field that already has a token
+		3 in a row is a win
+		A full board without 3 in a row ends game in draw
+		*/
 
 		[Test]
 		public void Represents_a_3_by_3_game_board()
