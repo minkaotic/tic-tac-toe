@@ -14,7 +14,6 @@ namespace TicTacToe.Tests
 		}
 
 		/* TODO: Things to test:
-		A token cannot be placed in a field that already has a token
 		3 in a row is a win
 		A full board without 3 in a row ends game in draw
 		*/
@@ -53,6 +52,14 @@ namespace TicTacToe.Tests
 
 			_game.PlayNextTurn(2, 1);
 			Assert.That(_game.CurrentPlayer, Is.EqualTo(Player.One));
+		}
+
+		[Test]
+		public void Throws_if_token_is_placed_in_non_empty_field()
+		{
+			_game.PlayNextTurn(2, 2);
+			var exception = Assert.Throws<FieldAlreadyUsedException>(() => { _game.PlayNextTurn(2, 2); });
+			Assert.That(exception.Message, Is.EqualTo("Field has already been claimed in a previous move"));
 		}
 
 		private void AssertThatEachDimensionHasThreeFields()

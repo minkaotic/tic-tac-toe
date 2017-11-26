@@ -1,4 +1,6 @@
-﻿namespace TicTacToe
+﻿using System;
+
+namespace TicTacToe
 {
 	public class Game
 	{
@@ -18,6 +20,11 @@
 
 		public void PlayNextTurn(int horizontal, int vertical)
 		{
+			if (GameBoard[horizontal, vertical] != Field.Empty)
+			{
+				throw new FieldAlreadyUsedException("Field has already been claimed in a previous move");
+			}
+
 			GameBoard[horizontal, vertical] = CurrentPlayerToken();
 			CurrentPlayer = NextPlayer();
 		}
@@ -31,5 +38,10 @@
 		{
 			return CurrentPlayer == Player.One ? Player.Two : Player.One;
 		}
+	}
+
+	public class FieldAlreadyUsedException : Exception
+	{
+		public FieldAlreadyUsedException(string message) : base(message) { }
 	}
 }
