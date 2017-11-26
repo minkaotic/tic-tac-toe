@@ -18,16 +18,18 @@
 
 		public void PlayNextTurn(int horizontal, int vertical)
 		{
-			if (CurrentPlayer == Player.One)
-			{
-				GameBoard[horizontal, vertical] = Field.X;
-				CurrentPlayer = Player.Two;
-			}
-			else
-			{
-				GameBoard[horizontal, vertical] = Field.O;
-				CurrentPlayer = Player.One;
-			}
+			GameBoard[horizontal, vertical] = CurrentPlayerToken();
+			CurrentPlayer = NextPlayer();
+		}
+
+		private Field CurrentPlayerToken()
+		{
+			return CurrentPlayer == Player.One ? Field.X : Field.O;
+		}
+
+		private Player NextPlayer()
+		{
+			return CurrentPlayer == Player.One ? Player.Two : Player.One;
 		}
 	}
 }
