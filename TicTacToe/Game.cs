@@ -3,7 +3,7 @@
 	public class Game
 	{
 		public Field[,] GameBoard { get; }
-		public int CurrentPlayer { get; private set; }
+		public Player CurrentPlayer { get; private set; }
 
 		public Game()
 		{
@@ -13,20 +13,20 @@
 				{Field.Empty, Field.Empty, Field.Empty},
 				{Field.Empty, Field.Empty, Field.Empty}
 			};
-			CurrentPlayer = 1;
+			CurrentPlayer = Player.One;
 		}
 
 		public void PlayNextTurn(int horizontal, int vertical)
 		{
-			if (CurrentPlayer == 1)
+			if (CurrentPlayer == Player.One)
 			{
 				GameBoard[horizontal, vertical] = Field.X;
-				CurrentPlayer = 2;
+				CurrentPlayer = Player.Two;
 			}
 			else
 			{
 				GameBoard[horizontal, vertical] = Field.O;
-				CurrentPlayer = 1;
+				CurrentPlayer = Player.One;
 			}
 		}
 	}
