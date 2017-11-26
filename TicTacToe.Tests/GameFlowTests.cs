@@ -14,7 +14,6 @@ namespace TicTacToe.Tests
 		}
 
 		/* TODO: Things to test:
-		Returns currently active player
 		A token cannot be placed in a field that already has a token
 		3 in a row is a win
 		A full board without 3 in a row ends game in draw
@@ -42,6 +41,18 @@ namespace TicTacToe.Tests
 
 			_game.PlayNextTurn(0, 2);
 			Assert.That(_game.GameBoard[0, 2], Is.EqualTo((int)FieldIs.O));
+		}
+
+		public void Returns_currently_active_player()
+		{
+			_game.PlayNextTurn(2, 2);
+			Assert.That(_game.CurrentPlayer, Is.EqualTo(1));
+
+			_game.PlayNextTurn(2, 1);
+			Assert.That(_game.CurrentPlayer, Is.EqualTo(2));
+
+			_game.PlayNextTurn(1, 2);
+			Assert.That(_game.CurrentPlayer, Is.EqualTo(1));
 		}
 
 		private void AssertThatEachDimensionHasThreeFields()

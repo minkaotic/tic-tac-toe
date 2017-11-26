@@ -29,5 +29,10 @@
 				_currentPlayer = 1;
 			}
 		}
+
+		public int CurrentPlayer()
+		{
+			return _currentPlayer;
+		}
 	}
 }
