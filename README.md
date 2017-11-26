@@ -1,8 +1,8 @@
 # Tic-Tac-Toe
-Code kata using TDD, to explore C# multi-dimensional arrays.
+Code kata using TDD, to explore C# multi-dimensional arrays and enums.
 
 ### Approach 
-Breaking requirements down into the following testables:
+Following a strict red->green->refactor loop, I am breaking requirements down into the following testables:
 
 - Initial game represents a 3x3 empty game board
 - First player's moves are persisted (x)
