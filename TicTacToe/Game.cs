@@ -9,9 +9,9 @@
 		{
 			GameBoard = new[,]
 			{
-				{ (int)FieldIs.Empty, (int)FieldIs.Empty, (int)FieldIs.Empty },
-				{ (int)FieldIs.Empty, (int)FieldIs.Empty, (int)FieldIs.Empty },
-				{ (int)FieldIs.Empty, (int)FieldIs.Empty, (int)FieldIs.Empty }
+				{(int) FieldIs.Empty, (int) FieldIs.Empty, (int) FieldIs.Empty},
+				{(int) FieldIs.Empty, (int) FieldIs.Empty, (int) FieldIs.Empty},
+				{(int) FieldIs.Empty, (int) FieldIs.Empty, (int) FieldIs.Empty}
 			};
 			_currentPlayer = 1;
 		}
