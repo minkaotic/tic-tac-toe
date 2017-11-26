@@ -14,9 +14,6 @@ namespace TicTacToe.Tests
 		}
 
 		/* TODO: Things to test:
-		First player's moves are persisted (x)
-		Second player's moves are persisted (0)
-		Players (and thus token types) draws are strictly alternated
 		Returns currently active player
 		A token cannot be placed in a field that already has a token
 		3 in a row is a win
@@ -32,11 +29,21 @@ namespace TicTacToe.Tests
 		}
 
 		[Test]
-		public void Stores_first_player_move()
+		public void Stores_player_moves_alternately()
 		{
 			_game.PlayNextTurn(2, 2);
-
 			Assert.That(_game.GameBoard[2,2], Is.EqualTo((int)FieldIs.X));
+
+			_game.PlayNextTurn(2, 1);
+			Assert.That(_game.GameBoard[2,1], Is.EqualTo((int)FieldIs.O));
+
+			_game.PlayNextTurn(1, 2);
+			Assert.That(_game.GameBoard[1, 2], Is.EqualTo((int)FieldIs.X));
+
+			_game.PlayNextTurn(0, 2);
+			Assert.That(_game.GameBoard[0, 2], Is.EqualTo((int)FieldIs.O));
+		}
+
 		private void AssertThatEachDimensionHasThreeFields()
 		{
 			const int firstDimension = 0;
