@@ -2,37 +2,32 @@
 {
 	public class Game
 	{
-		public int[,] GameBoard { get; }
-		private int _currentPlayer;
+		public Field[,] GameBoard { get; }
+		public int CurrentPlayer { get; private set; }
 
 		public Game()
 		{
-			GameBoard = new[,]
+			GameBoard = new Field[,]
 			{
-				{(int) FieldIs.Empty, (int) FieldIs.Empty, (int) FieldIs.Empty},
-				{(int) FieldIs.Empty, (int) FieldIs.Empty, (int) FieldIs.Empty},
-				{(int) FieldIs.Empty, (int) FieldIs.Empty, (int) FieldIs.Empty}
+				{Field.Empty, Field.Empty, Field.Empty},
+				{Field.Empty, Field.Empty, Field.Empty},
+				{Field.Empty, Field.Empty, Field.Empty}
 			};
-			_currentPlayer = 1;
+			CurrentPlayer = 1;
 		}
 
 		public void PlayNextTurn(int horizontal, int vertical)
 		{
-			if (_currentPlayer == 1)
+			if (CurrentPlayer == 1)
 			{
-				GameBoard[horizontal, vertical] = (int) FieldIs.X;
-				_currentPlayer = 2;
+				GameBoard[horizontal, vertical] = Field.X;
+				CurrentPlayer = 2;
 			}
 			else
 			{
-				GameBoard[horizontal, vertical] = (int) FieldIs.O;
-				_currentPlayer = 1;
+				GameBoard[horizontal, vertical] = Field.O;
+				CurrentPlayer = 1;
 			}
-		}
-
-		public int CurrentPlayer()
-		{
-			return _currentPlayer;
 		}
 	}
 }

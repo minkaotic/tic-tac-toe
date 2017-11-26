@@ -31,16 +31,16 @@ namespace TicTacToe.Tests
 		public void Stores_player_moves_alternately()
 		{
 			_game.PlayNextTurn(2, 2);
-			Assert.That(_game.GameBoard[2,2], Is.EqualTo((int)FieldIs.X));
+			Assert.That(_game.GameBoard[2,2], Is.EqualTo(Field.X));
 
 			_game.PlayNextTurn(2, 1);
-			Assert.That(_game.GameBoard[2,1], Is.EqualTo((int)FieldIs.O));
+			Assert.That(_game.GameBoard[2,1], Is.EqualTo(Field.O));
 
 			_game.PlayNextTurn(1, 2);
-			Assert.That(_game.GameBoard[1, 2], Is.EqualTo((int)FieldIs.X));
+			Assert.That(_game.GameBoard[1, 2], Is.EqualTo(Field.X));
 
 			_game.PlayNextTurn(0, 2);
-			Assert.That(_game.GameBoard[0, 2], Is.EqualTo((int)FieldIs.O));
+			Assert.That(_game.GameBoard[0, 2], Is.EqualTo(Field.O));
 		}
 
 		public void Returns_currently_active_player()

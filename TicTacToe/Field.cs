@@ -1,6 +1,6 @@
 ﻿namespace TicTacToe
 {
-	public enum FieldIs
+	public enum Field
 	{
 		Empty = 0,
 		X = 1,
