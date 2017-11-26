@@ -24,16 +24,11 @@ namespace TicTacToe.Tests
 		*/
 
 		[Test]
-		public void Represents_a_3_by_3_game_board()
+		public void Represents_a_two_dimensional_game_board_with_nine_fields()
 		{
 			Assert.That(_game.GameBoard.Length, Is.EqualTo(9));
 			Assert.That(_game.GameBoard.Rank, Is.EqualTo(2));
-
-			const int firstDimension = 0;
-			const int secondDimension = 1;
-			const int indexOfThirdElement = 2;
-			Assert.That(_game.GameBoard.GetUpperBound(firstDimension), Is.EqualTo(indexOfThirdElement));
-			Assert.That(_game.GameBoard.GetUpperBound(secondDimension), Is.EqualTo(indexOfThirdElement));
+			AssertThatEachDimensionHasThreeFields();
 		}
 
 		[Test]
@@ -42,6 +37,13 @@ namespace TicTacToe.Tests
 			_game.PlayNextTurn(2, 2);
 
 			Assert.That(_game.GameBoard[2,2], Is.EqualTo((int)FieldIs.X));
+		private void AssertThatEachDimensionHasThreeFields()
+		{
+			const int firstDimension = 0;
+			const int secondDimension = 1;
+			const int indexOfThirdElement = 2;
+			Assert.That(_game.GameBoard.GetUpperBound(firstDimension), Is.EqualTo(indexOfThirdElement));
+			Assert.That(_game.GameBoard.GetUpperBound(secondDimension), Is.EqualTo(indexOfThirdElement));
 		}
 	}
 }
