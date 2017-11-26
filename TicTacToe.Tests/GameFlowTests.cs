@@ -10,7 +10,8 @@ namespace TicTacToe.Tests
 		[SetUp]
 		public void Setup()
 		{
-			_game = new Game();
+			var board = new Board();
+			_game = new Game(board);
 		}
 
 		/* TODO: Things to test:
@@ -21,8 +22,8 @@ namespace TicTacToe.Tests
 		[Test]
 		public void Represents_a_two_dimensional_game_board_with_nine_fields()
 		{
-			Assert.That(_game.GameBoard.Length, Is.EqualTo(9));
-			Assert.That(_game.GameBoard.Rank, Is.EqualTo(2));
+			Assert.That(_game.Board.Matrix.Length, Is.EqualTo(9));
+			Assert.That(_game.Board.Matrix.Rank, Is.EqualTo(2));
 			AssertThatEachDimensionHasThreeFields();
 		}
 
@@ -30,16 +31,16 @@ namespace TicTacToe.Tests
 		public void Stores_player_moves_alternately()
 		{
 			_game.PlayNextTurn(2, 2);
-			Assert.That(_game.GameBoard[2,2], Is.EqualTo(Field.X));
+			Assert.That(_game.Board.Matrix[2,2], Is.EqualTo(Field.X));
 
 			_game.PlayNextTurn(2, 1);
-			Assert.That(_game.GameBoard[2,1], Is.EqualTo(Field.O));
+			Assert.That(_game.Board.Matrix[2,1], Is.EqualTo(Field.O));
 
 			_game.PlayNextTurn(1, 2);
-			Assert.That(_game.GameBoard[1, 2], Is.EqualTo(Field.X));
+			Assert.That(_game.Board.Matrix[1, 2], Is.EqualTo(Field.X));
 
 			_game.PlayNextTurn(0, 2);
-			Assert.That(_game.GameBoard[0, 2], Is.EqualTo(Field.O));
+			Assert.That(_game.Board.Matrix[0, 2], Is.EqualTo(Field.O));
 		}
 
 		[Test]
@@ -55,6 +56,16 @@ namespace TicTacToe.Tests
 		}
 
 		[Test]
+		public void Three_X_in_a_row_means_player_one_has_won()
+		{
+			_game.PlayNextTurn(2, 2);
+			_game.PlayNextTurn(2, 1);
+			_game.PlayNextTurn(1, 2);
+			_game.PlayNextTurn(1, 1);
+			_game.PlayNextTurn(0, 2);
+		}
+
+		[Test]
 		public void Throws_if_token_is_placed_in_non_empty_field()
 		{
 			_game.PlayNextTurn(2, 2);
@@ -67,8 +78,8 @@ namespace TicTacToe.Tests
 			const int firstDimension = 0;
 			const int secondDimension = 1;
 			const int indexOfThirdElement = 2;
-			Assert.That(_game.GameBoard.GetUpperBound(firstDimension), Is.EqualTo(indexOfThirdElement));
-			Assert.That(_game.GameBoard.GetUpperBound(secondDimension), Is.EqualTo(indexOfThirdElement));
+			Assert.That(_game.Board.Matrix.GetUpperBound(firstDimension), Is.EqualTo(indexOfThirdElement));
+			Assert.That(_game.Board.Matrix.GetUpperBound(secondDimension), Is.EqualTo(indexOfThirdElement));
 		}
 	}
 }

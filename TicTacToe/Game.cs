@@ -4,34 +4,28 @@ namespace TicTacToe
 {
 	public class Game
 	{
-		public Field[,] GameBoard { get; }
+		//TODO: refactor board to be private field
+		//and only expose things needed (move existing
+		//board-related tests to separate unit test)
+		public Board Board { get; }
 		public Player CurrentPlayer { get; private set; }
 
-		public Game()
+		public Game(Board board)
 		{
-			GameBoard = new Field[,]
-			{
-				{Field.Empty, Field.Empty, Field.Empty},
-				{Field.Empty, Field.Empty, Field.Empty},
-				{Field.Empty, Field.Empty, Field.Empty}
-			};
+			Board = board;
 			CurrentPlayer = Player.One;
 		}
 
 		public void PlayNextTurn(int horizontal, int vertical)
 		{
-			if (GameBoard[horizontal, vertical] != Field.Empty)
+			if (Board.Matrix[horizontal, vertical] != Field.Empty)
 			{
 				throw new FieldAlreadyUsedException("Field has already been claimed in a previous move");
 			}
 
-			GameBoard[horizontal, vertical] = CurrentPlayerToken();
+			var currentPlayerToken = CurrentPlayer == Player.One ? Field.X : Field.O;
+			Board.UpdateBoard(horizontal, vertical, currentPlayerToken);
 			CurrentPlayer = NextPlayer();
-		}
-
-		private Field CurrentPlayerToken()
-		{
-			return CurrentPlayer == Player.One ? Field.X : Field.O;
 		}
 
 		private Player NextPlayer()
