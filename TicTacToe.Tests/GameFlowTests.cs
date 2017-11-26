@@ -43,16 +43,16 @@ namespace TicTacToe.Tests
 			Assert.That(_game.GameBoard[0, 2], Is.EqualTo(Field.O));
 		}
 
+		[Test]
 		public void Returns_currently_active_player()
 		{
+			Assert.That(_game.CurrentPlayer, Is.EqualTo(Player.One));
+
 			_game.PlayNextTurn(2, 2);
-			Assert.That(_game.CurrentPlayer, Is.EqualTo(1));
+			Assert.That(_game.CurrentPlayer, Is.EqualTo(Player.Two));
 
 			_game.PlayNextTurn(2, 1);
-			Assert.That(_game.CurrentPlayer, Is.EqualTo(2));
-
-			_game.PlayNextTurn(1, 2);
-			Assert.That(_game.CurrentPlayer, Is.EqualTo(1));
+			Assert.That(_game.CurrentPlayer, Is.EqualTo(Player.One));
 		}
 
 		private void AssertThatEachDimensionHasThreeFields()
