@@ -19,6 +19,7 @@ namespace TicTacToe.Tests
 		A full board without 3 in a row ends game in draw
 		*/
 
+		//ToDo: change to behavioural tests instead
 		[Test]
 		public void Represents_a_two_dimensional_game_board_with_nine_fields()
 		{
@@ -31,16 +32,16 @@ namespace TicTacToe.Tests
 		public void Stores_player_moves_alternately()
 		{
 			_game.PlayNextTurn(2, 2);
-			Assert.That(_game.Board.Matrix[2,2], Is.EqualTo(Field.X));
+			Assert.That(_game.Board.TokenAt(2,2), Is.EqualTo(Field.X));
 
 			_game.PlayNextTurn(2, 1);
-			Assert.That(_game.Board.Matrix[2,1], Is.EqualTo(Field.O));
+			Assert.That(_game.Board.TokenAt(2,1), Is.EqualTo(Field.O));
 
 			_game.PlayNextTurn(1, 2);
-			Assert.That(_game.Board.Matrix[1, 2], Is.EqualTo(Field.X));
+			Assert.That(_game.Board.TokenAt(1, 2), Is.EqualTo(Field.X));
 
 			_game.PlayNextTurn(0, 2);
-			Assert.That(_game.Board.Matrix[0, 2], Is.EqualTo(Field.O));
+			Assert.That(_game.Board.TokenAt(0, 2), Is.EqualTo(Field.O));
 		}
 
 		[Test]
